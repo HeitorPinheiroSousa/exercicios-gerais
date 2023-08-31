@@ -1,4 +1,4 @@
-#include "Includes/matrix_utils.h"
+#include "matrix_utils.h"
 #include <stdio.h>
 
 int main(){
@@ -59,27 +59,27 @@ int main(){
             switch(opcao){
                 case 1:
                 {
-                    int i,j,resultado[lin1][col1];
+                    /* int i,j,resultado[lin1][col1];
                     for(i=0;i<lin1;i++){
                         for(j=0;j<col1;j++){
                             resultado[i][j]=matriz1[i][j];
                         }
-                    }
-                    scalar_multiply(lin1,col1,resultado,scalar);
-                    matrix_print(lin1,col1,resultado);
+                    } */
+                    scalar_multiply(lin1,col1,matriz1,scalar);
+                    matrix_print(lin1,col1,matriz1);
                     break;
                 }
 
                 case 2:
                 {
-                    int i,j,resultado[lin2][col2];
+                    /* int i,j,resultado[lin2][col2];
                     for(i=0;i<lin2;i++){
                         for(j=0;j<col2;j++){
                             resultado[i][j]=matriz2[i][j];
                         }
-                    }
-                    scalar_multiply(lin1,col1,resultado,scalar);
-                    matrix_print(lin1,col1,resultado);
+                    } */
+                    scalar_multiply(lin2,col2,matriz2,scalar);
+                    matrix_print(lin2,col2,matriz2);
                     break;
                 }
             }
