@@ -56,7 +56,7 @@ void matrix_sub(int rows1, int cols1, int matrix1[rows1][cols1], int rows2, int 
 }
 
 void matrix_multiply(int rows1, int cols1, int matrix1[rows1][cols1], int rows2, int cols2, int matrix2[rows2][cols2], int result[rows1][cols2]){
-    int i,j,o,p,m,n;
+    int i,j,o,p;
     for(o=0;o<rows1;o++){
         for(p=0;p<cols2;p++){
             int valor=0;
