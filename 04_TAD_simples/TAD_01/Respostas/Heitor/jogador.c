@@ -12,12 +12,27 @@ tJogador CriaJogador(int idJogador){
 tTabuleiro JogaJogador(tJogador jogador, tTabuleiro tabuleiro){
     tJogada jogada;
     jogada = LeJogada();
-    if(EhPosicaoValidaTabuleiro(jogada.x,jogada.y)&&
-    EstaLivrePosicaoTabuleiro(tabuleiro,jogada.x,jogada.y)){
-        char c = jogador.id==ID_JOGADOR_1 ? tabuleiro.peca1 : tabuleiro.peca2;
-        tabuleiro.posicoes[jogada.x][jogada.y]=c;
+
+    if(jogador.id==ID_JOGADOR_1) printf("Jogador 1\nDigite uma posicao (x e y):\n");
+    else if(jogador.id==ID_JOGADOR_2) printf("Jogador 2\nDigite uma posicao (x e y):\n");
+
+    if(!EhPosicaoValidaTabuleiro(jogada.x,jogada.y)){
+        printf("Posicao invalida (FORA DO TABULEIRO - [%d,%d] )!\n",jogada.x,jogada.y);
+        jogada.sucesso=0;
+    } else
+    if(!EstaLivrePosicaoTabuleiro(tabuleiro,jogada.x,jogada.y)){
+        printf("Posicao invalida (OCUPADA - [%d,%d] )!\n",jogada.x,jogada.y);
+        jogada.sucesso=0;
+    } else{
+        jogada.sucesso=1;
+        tabuleiro.posicoes[jogada.x][jogada.y] =
+        jogador.id==ID_JOGADOR_1 ? tabuleiro.peca1 : tabuleiro.peca2;
+
+        printf("Jogada [%d,%d]!\n",jogada.x,jogada.y);
     }
-    return tabuleiro;
+
+    if(FoiJogadaBemSucedida(jogada)) return tabuleiro;
+    else return JogaJogador(jogador,tabuleiro);
 }
 
 int VenceuJogador(tJogador jogador, tTabuleiro tabuleiro){
