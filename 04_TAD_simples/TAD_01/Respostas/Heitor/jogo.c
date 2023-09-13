@@ -6,15 +6,15 @@ tJogo CriaJogo(){
     jogo.tabuleiro = CriaTabuleiro();
     jogo.jogador1 = CriaJogador(ID_JOGADOR_1);
     jogo.jogador2 = CriaJogador(ID_JOGADOR_2);
+    return jogo;
 }
 
 void ComecaJogo(tJogo jogo){
     while(1){
-        ImprimeTabuleiro(jogo.tabuleiro);
-        JogaJogador(jogo.jogador1,jogo.tabuleiro);
+        jogo.tabuleiro = JogaJogador(jogo.jogador1,jogo.tabuleiro);
         ImprimeTabuleiro(jogo.tabuleiro);
         if(AcabouJogo(jogo)) break;
-        JogaJogador(jogo.jogador2,jogo.tabuleiro);
+        jogo.tabuleiro = JogaJogador(jogo.jogador2,jogo.tabuleiro);
         ImprimeTabuleiro(jogo.tabuleiro);
         if(AcabouJogo(jogo)); break;
     }
@@ -25,7 +25,7 @@ int AcabouJogo(tJogo jogo){
     !VenceuJogador(jogo.jogador1,jogo.tabuleiro) &&
     !VenceuJogador(jogo.jogador2,jogo.tabuleiro)){
         printf("Sem vencedor!\n"); return 1;
-    } else
+    } else 
     if(VenceuJogador(jogo.jogador1,jogo.tabuleiro)){
         printf("JOGADOR 1 Venceu!\n"); return 1;
     } else
@@ -37,7 +37,7 @@ int AcabouJogo(tJogo jogo){
 int ContinuaJogo(){
     char c;
     printf("Jogar novamente? (s,n)\n");
-    scanf("%c\n",&c);
+    scanf("%c",&c);
     if(c=='s') return 1;
-    else return 0;
+    else if(c=='n') return 0;
 }

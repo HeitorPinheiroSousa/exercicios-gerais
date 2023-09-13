@@ -1,4 +1,4 @@
-all: gerabin principal
+all: gerabin principal clean
 
 gerabin: jogada.c jogador.c jogo.c tabuleiro.c main.c
 	gcc -c jogada.c jogador.c jogo.c tabuleiro.c main.c

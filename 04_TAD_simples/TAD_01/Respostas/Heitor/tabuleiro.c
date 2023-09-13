@@ -16,7 +16,8 @@ tTabuleiro CriaTabuleiro(){
 }
 
 tTabuleiro MarcaPosicaoTabuleiro(tTabuleiro tabuleiro, int peca, int x, int y){
-    tabuleiro.posicoes[x][y] = peca==1 ? tabuleiro.peca1 : tabuleiro.peca2;
+    if(peca==1) tabuleiro.posicoes[x][y]=tabuleiro.peca1;
+    else if(peca==2) tabuleiro.posicoes[x][y]=tabuleiro.peca2;
     return tabuleiro;
 }
 
@@ -32,8 +33,8 @@ int TemPosicaoLivreTabuleiro(tTabuleiro tabuleiro){
 }
 
 int EstaMarcadaPosicaoPecaTabuleiro(tTabuleiro tabuleiro, int x, int y, int peca){
-    return peca==1 ? tabuleiro.posicoes[x][y]==tabuleiro.peca1
-                   : tabuleiro.posicoes[x][y]==tabuleiro.peca2;
+    if(peca==1) return (tabuleiro.posicoes[x][y]==tabuleiro.peca1);
+    else if(peca==2) return (tabuleiro.posicoes[x][y]==tabuleiro.peca2);
 }
 
 int EstaLivrePosicaoTabuleiro(tTabuleiro tabuleiro, int x, int y){
